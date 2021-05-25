@@ -2,6 +2,7 @@ from iBott.robot_activities import Robot, RobotException, Robotmethod, get_all_M
 from iBott.browser_activities import ChromeBrowser
 from iBott.email_activities import Mail
 import robot.settings as settings
+from iBott.system_activities import saveFileFromOrchestrator
 
 
 class Main(Robot):
@@ -29,11 +30,10 @@ class Main(Robot):
     @Robotmethod
     def start(self):
         """Init variables, instance objects and start the applications you are going to work with"""
+        self.Log.info("storing file from Orchestrator")
+        saveFileFromOrchestrator(self.robotParameters['file-1621919468164'])
 
-        self.browser = ChromeBrowser()
-        self.browser.open()
 
-        pass
 
     @Robotmethod
     def process(self):
